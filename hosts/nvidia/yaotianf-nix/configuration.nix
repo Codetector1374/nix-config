@@ -42,24 +42,28 @@
 #   pulse.enable = true;
 # };
 
-# Enable touchpad support (enabled default in most desktopManager).
-# services.libinput.enable = true;
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-# Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.yaotianf = {
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
       packages = with pkgs; [
-      tree
+        fd
+        ripgrep
+        findutils
+        git
+        emacs
       ];
   };
 
   environment.systemPackages = with pkgs; [
+    nix-diff
+    tree
     git
-      sudo
-      vim
-      wget
-      curl
+    sudo
+    vim
+    wget
+    curl
   ];
 
 # Some programs need SUID wrappers, can be configured further or are
@@ -73,7 +77,6 @@
   services.openssh.enable = true;
 
   networking.firewall.enable = false;
-
-  system.stateVersion = "24.05"; # Did you read the comment?
+  system.stateVersion = "24.05"; # Don't touch this
 }
 
