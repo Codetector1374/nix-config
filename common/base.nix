@@ -16,6 +16,7 @@
   programs.waybar.enable = true;
 
   environment.systemPackages = with pkgs; [
+    htop
     nix-diff
     killall
     file
