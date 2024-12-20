@@ -1,5 +1,5 @@
-{ 
-  config, 
+{
+  config,
   lib,
   pkgs,
   ...
@@ -7,7 +7,8 @@
   imports = [
     ./hardware-configuration.nix
     ../../../common/base.nix
-    ../../../common/user_nvidia.nix
+    ../../../common/headless.nix
+    ../../../common/work-dev.nix
   ];
 
   boot.loader.efi.canTouchEfiVariables = true;
@@ -17,6 +18,14 @@
     configurationLimit = 30;
     efiSupport = true;
     device = "nodev";
+  };
+
+  users.users.yaotianf = {
+    isNormalUser = true;
+    shell = pkgs.zsh;
+    extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
+    packages = with pkgs; [
+    ];
   };
 
   networking = {
@@ -40,10 +49,6 @@
   };
 # TODO: upstream this fix, usev6 should find ifv4 not if.
   systemd.services.ddclient.path = [ pkgs.iproute2 ];
-
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  services.openssh.enable = true;
 
   system.stateVersion = "24.05"; # Don't touch this
 }

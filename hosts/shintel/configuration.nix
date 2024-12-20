@@ -8,6 +8,8 @@
   imports =
     [
       ../../common/base.nix
+      ../../hardware/nvidia-gpu.nix
+      ../../common/graphical.nix
       ./hardware-configuration.nix
     ];
 
@@ -20,64 +22,12 @@
     device = "nodev";
   };
 
-  programs.git.enable = true;
-  services.desktopManager.plasma6 = {
-      enable = true;
-  };
-  services.displayManager.sddm = {
-    wayland.enable = true;
-    enable = true;
-  };
-
-  programs.hyprland = {
-    package = inputs.hyprland.packages.x86_64-linux.hyprland;
-    enable = true;
-  };
-
-  nixpkgs.config.allowUnfree = true; 
+  nixpkgs.config.allowUnfree = true;
   networking.hostName = "shintel"; # Define your hostname.
-  # Pick only one of the below networking options.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  # networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
   # Set your time zone.
   time.timeZone = "America/Los_Angeles";
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Select internationalisation properties.
-  # i18n.defaultLocale = "en_US.UTF-8";
-  # console = {
-  #   font = "Lat2-Terminus16";
-  #   keyMap = "us";
-  #   useXkbConfig = true; # use xkb.options in tty.
-  # };
-
-  # Enable the X11 windowing system.
-  # services.xserver.enable = true;
-
-
-  
-
-  # Configure keymap in X11
-  # services.xserver.xkb.layout = "us";
-  # services.xserver.xkb.options = "eurosign:e,caps:escape";
-
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
-
-  # Enable sound.
-  # hardware.pulseaudio.enable = true;
-  # OR
-  # services.pipewire = {
-  #   enable = true;
-  #   pulse.enable = true;
-  # };
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.codetector = {
@@ -89,60 +39,9 @@
     ];
   };
 
-  # programs.firefox.enable = true;
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    (pkgs.writeShellScriptBin "loadHy3" ''
-    ${inputs.hyprland.packages.x86_64-linux.hyprland}/bin/hyprctl plugin load ${inputs.hy3.packages.x86_64-linux.hy3}/lib/libhy3.so
-    '')
-    vim
-    wget
-    inputs.hy3.packages.x86_64-linux.hy3
-  ];
-
-
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
   networking.firewall.enable = false;
-
-  # Copy the NixOS configuration file and link it from the resulting system
-  # (/run/current-system/configuration.nix). This is useful in case you
-  # accidentally delete configuration.nix.
-  # system.copySystemConfiguration = true;
-
-  hardware.graphics.enable = true;
-
-# Load nvidia driver for Xorg and Wayland
-  services.xserver.videoDrivers = ["nvidia"];
-
-  hardware.nvidia = {
-
-# Modesetting is required.
-	  modesetting.enable = true;
-
-# Nvidia power management. Experimental, and can cause sleep/suspend to fail.
-# Enable this if you have graphical corruption issues or application crashes after waking
-# up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead
-# of just the bare essentials.
-	  powerManagement.enable = true;
-
-# Fine-grained power management. Turns off GPU when not in use.
-# Experimental and only works on modern Nvidia GPUs (Turing or newer).
-	  powerManagement.finegrained = false;
-# OpenRM
-	  open = true;
-
-# Enable the Nvidia settings menu,
-# accessible via `nvidia-settings`.
-	  nvidiaSettings = false;
-
-# Optionally, you may need to select the appropriate driver version for your specific GPU.
-	  package = config.boot.kernelPackages.nvidiaPackages.latest;
-  };
-# end nvidia
-
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
