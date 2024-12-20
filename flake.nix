@@ -3,7 +3,12 @@
 
   inputs = {
 # NixOS official package source, using the branch here
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+    hyprland.url = "github:hyprwm/Hyprland?submodules=1&ref=v0.46.0"; # TODO: prob never get packaged
+    hy3 = {
+        url = "github:outfoxxed/hy3?ref=hl0.46.0"; # TODO: prob never get packaged
+        inputs.hyprland.follows = "hyprland";
+    };
   };
 
   outputs = {
@@ -29,6 +34,12 @@
         specialArgs = { inherit inputs outputs; };
         modules = [
           ./hosts/nvidia/yaotianf-nix/configuration.nix
+        ];
+      };
+      "shintel" = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs outputs; };
+        modules = [
+          ./hosts/shintel/configuration.nix
         ];
       };
     };
