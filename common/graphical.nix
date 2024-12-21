@@ -32,6 +32,17 @@
     enable = true;
   };
 
+  fonts.packages = with pkgs; [
+    noto-fonts
+    noto-fonts-cjk-sans
+    noto-fonts-emoji
+    liberation_ttf
+    fira-mono
+    dina-font
+    nerdfonts
+    font-awesome
+  ];
+
   # Graphical Packages
   environment.systemPackages = with pkgs; [
     inputs.hy3.packages.x86_64-linux.hy3
@@ -43,5 +54,6 @@
     rofi-wayland
     # Generic Apps
     kitty
+    vscode-fhs
   ];
 }
