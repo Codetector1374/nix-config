@@ -43,6 +43,12 @@
     font-awesome
   ];
 
+  programs._1password.enable = true;
+  programs._1password-gui = {
+    enable = true;
+    polkitPolicyOwners = [ "codetector" ];
+  };
+
   # Graphical Packages
   environment.systemPackages = with pkgs; [
     inputs.hy3.packages.x86_64-linux.hy3
@@ -51,9 +57,19 @@
     ${inputs.hyprland.packages.x86_64-linux.hyprland}/bin/hyprctl plugin load ${inputs.hy3.packages.x86_64-linux.hy3}/lib/libhy3.so
     '')
     # Hyprland
+    kdePackages.plasma-workspace
     rofi-wayland
+    hyprpaper
+    hypridle
+    hyprlock
+    hyprsunset
+    swaynotificationcenter
     # Generic Apps
+    google-chrome
+    discord
+    usbutils
     kitty
     vscode-fhs
+    telegram-desktop
   ];
 }

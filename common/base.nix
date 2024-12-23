@@ -16,9 +16,24 @@
     enable = true;
   };
 
+  users.defaultUserShell = pkgs.zsh;
+
   programs.git.enable = true;
 
+  # Emacs
+  services.emacs = {
+    enable = true;
+    package = pkgs.emacs30-pgtk;
+  };
+
+  services.lorri.enable = true;
+
   environment.systemPackages = with pkgs; [
+    direnv
+    pciutils
+    gawk
+    diffutils
+    rustup
     fd
     rsync
     openssh

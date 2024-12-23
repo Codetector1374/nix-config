@@ -10,6 +10,7 @@
       ../../common/base.nix
       ../../hardware/nvidia-gpu.nix
       ../../common/graphical.nix
+      ../../applications/weeb-games.nix
       ./hardware-configuration.nix
     ];
 
