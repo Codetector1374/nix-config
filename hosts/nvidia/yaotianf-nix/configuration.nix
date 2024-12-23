@@ -8,6 +8,7 @@
     ./hardware-configuration.nix
     ../../../common/base.nix
     ../../../common/headless.nix
+    ../../../hardware/nvidia-gpu.nix
     ../../../common/work-dev.nix
   ];
 

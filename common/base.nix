@@ -20,6 +20,8 @@
 
   environment.systemPackages = with pkgs; [
     fd
+    rsync
+    openssh
     ripgrep
     findutils
     emacs

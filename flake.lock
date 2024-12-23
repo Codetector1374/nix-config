@@ -470,6 +470,7 @@
       },
       "original": {
         "owner": "nix-community",
+        "ref": "8b6db451de46ecf9b4ab3d01ef76e59957ff549f",
         "repo": "nixos-vscode-server",
         "type": "github"
       }
