@@ -17,6 +17,8 @@
       enable = true;
   };
 
+  security.pam.services.sddm.enableKwallet = true;
+
   services.displayManager.sddm = {
     wayland.enable = true;
     enable = true;
@@ -48,6 +50,8 @@
     enable = true;
     polkitPolicyOwners = [ "codetector" ];
   };
+
+  environment.etc."/xdg/menus/plasma-applications.menu".text = builtins.readFile "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
 
   # Graphical Packages
   environment.systemPackages = with pkgs; [

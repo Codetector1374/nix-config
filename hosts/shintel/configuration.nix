@@ -11,6 +11,8 @@
       ../../hardware/nvidia-gpu.nix
       ../../common/graphical.nix
       ../../applications/weeb-games.nix
+      ../../applications/misc.nix
+      ../../applications/development.nix
       ./hardware-configuration.nix
     ];
 

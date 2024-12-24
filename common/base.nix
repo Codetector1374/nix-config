@@ -29,11 +29,11 @@
   services.lorri.enable = true;
 
   environment.systemPackages = with pkgs; [
+    python312Full
     direnv
     pciutils
     gawk
     diffutils
-    rustup
     fd
     rsync
     openssh
