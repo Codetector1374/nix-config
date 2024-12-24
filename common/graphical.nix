@@ -24,6 +24,8 @@
     enable = true;
   };
 
+  xdg.menus.enable = true;
+
   services.pipewire = {
     enable = true;
     pulse.enable = true;
@@ -51,8 +53,6 @@
     polkitPolicyOwners = [ "codetector" ];
   };
 
-  environment.etc."/xdg/menus/plasma-applications.menu".text = builtins.readFile "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
-
   # Graphical Packages
   environment.systemPackages = with pkgs; [
     inputs.hy3.packages.x86_64-linux.hy3
@@ -77,5 +77,6 @@
     kitty
     vscode-fhs
     telegram-desktop
+    signal-desktop
   ];
 }
