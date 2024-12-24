@@ -8,11 +8,11 @@
   imports =
     [
       ../../common/base.nix
-      ../../hardware/nvidia-gpu.nix
       ../../common/graphical.nix
       ../../applications/weeb-games.nix
       ../../applications/misc.nix
       ../../applications/development.nix
+      ../../hardware/audio/jbl305p.nix
       ./hardware-configuration.nix
     ];
 

@@ -68,6 +68,8 @@
     hyprlock
     hyprsunset
     swaynotificationcenter
+    # Volume Contro
+    pavucontrol
     # Generic Apps
     google-chrome
     discord
