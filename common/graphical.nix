@@ -18,6 +18,10 @@
   };
 
   security.pam.services.sddm.enableKwallet = true;
+  security.pam.services.kwallet = {
+    name = "kwallet";
+    enableKwallet = true;
+  };
 
   services.displayManager.sddm = {
     wayland.enable = true;
@@ -51,6 +55,19 @@
   programs._1password-gui = {
     enable = true;
     polkitPolicyOwners = [ "codetector" ];
+  };
+
+  i18n.inputMethod = {
+    type = "fcitx5";
+    enable = true;
+    fcitx5 = {
+      waylandFrontend = true;
+      addons = with pkgs; [
+        kdePackages.fcitx5-qt
+        fcitx5-chinese-addons
+        fcitx5-nord
+      ];
+    };
   };
 
   # Graphical Packages
