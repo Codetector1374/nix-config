@@ -11,22 +11,17 @@
   programs.firefox = {
     enable = true;
   };
-  programs.waybar.enable = true;
 
   services.desktopManager.plasma6 = {
       enable = true;
-  };
-
-  security.pam.services.sddm.enableKwallet = true;
-  security.pam.services.kwallet = {
-    name = "kwallet";
-    enableKwallet = true;
   };
 
   services.displayManager.sddm = {
     wayland.enable = true;
     enable = true;
   };
+
+  security.pam.services.sddm.kwallet.enable = true;
 
   xdg.menus.enable = true;
 
@@ -78,6 +73,7 @@
     ${inputs.hyprland.packages.x86_64-linux.hyprland}/bin/hyprctl plugin load ${inputs.hy3.packages.x86_64-linux.hy3}/lib/libhy3.so
     '')
     # Hyprland
+    waybar
     kdePackages.plasma-workspace
     rofi-wayland
     hyprpaper
@@ -92,6 +88,7 @@
     discord
     usbutils
     kitty
+    alacritty
     vscode-fhs
     telegram-desktop
     signal-desktop
