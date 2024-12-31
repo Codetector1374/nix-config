@@ -8,6 +8,12 @@
   # Gotta have flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  # No IPv6, god knows how it works
+  networking.enableIPv6 = false;
+
+  # Gotta use VIM
+  environment.variables.EDITOR = "vim";
+
   # I18N
   i18n.defaultLocale = "en_US.UTF-8";
 
