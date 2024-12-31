@@ -28,6 +28,7 @@
   in {
     nixosConfigurations = {
       nix-dev = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs outputs; };
         modules = [
           ./hosts/nix-dev/nix-dev.nix
         ];
