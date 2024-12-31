@@ -31,7 +31,7 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.interfaces.ens18 = {
-    enableDHCP = false;
+    useDHCP = false;
     ipv4.addresses = [
       {
         address = "10.45.3.110";
