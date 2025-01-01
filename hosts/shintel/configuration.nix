@@ -9,6 +9,7 @@
     [
       ../../common/base.nix
       ../../common/graphical.nix
+      ../../applications/embedded.nix
       ../../applications/weeb-games.nix
       ../../applications/misc.nix
       ../../applications/development.nix
@@ -40,6 +41,11 @@
     packages = with pkgs; [
       tree
     ];
+  };
+  # Add codetector to group
+  users.groups  = {
+    plugdev.members = ["codetector"];
+    dialout.members = ["codetector"];
   };
 
   # Enable the OpenSSH daemon.

@@ -14,6 +14,10 @@
   # Gotta use VIM
   environment.variables.EDITOR = "vim";
 
+  environment.etc."tmpfiles.d/thp.conf".text = ''
+    w /sys/kernel/mm/transparent_hugepage/enabled         - - - - always
+  '';
+
   # I18N
   i18n.defaultLocale = "en_US.UTF-8";
 
