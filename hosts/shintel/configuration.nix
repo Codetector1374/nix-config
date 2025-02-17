@@ -26,6 +26,26 @@
     device = "nodev";
   };
 
+  nix.settings = {
+    max-jobs = 0;
+    cores = 8;
+  };
+
+  nix.buildMachines = [
+    {
+      hostName = "nixdev";
+      system = "x86_64-linux";
+      protocol = "ssh-ng";
+      maxJobs = 4;
+      speedFactor = 4;
+      supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
+    }
+  ];
+  nix.distributedBuilds = true;
+  nix.extraOptions = ''
+	  builders-use-substitutes = true
+	'';
+
   nixpkgs.config.allowUnfree = true;
   networking.hostName = "shintel"; # Define your hostname.
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.

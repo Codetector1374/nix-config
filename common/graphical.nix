@@ -35,6 +35,11 @@
     enable = true;
   };
 
+  # Auto mount flash drive
+  services.devmon.enable = true;
+  services.gvfs.enable = true;
+  services.udisks2.enable = true;
+
   fonts.packages = with pkgs; [
     noto-fonts
     noto-fonts-cjk-sans
@@ -45,6 +50,8 @@
     nerdfonts
     font-awesome
   ];
+
+  programs.obs-studio.enable = true;
 
   programs._1password.enable = true;
   programs._1password-gui = {
@@ -89,8 +96,14 @@
     usbutils
     kitty
     alacritty
-    vscode-fhs
     telegram-desktop
     signal-desktop
+    (vscode.fhsWithPackages(ps: with ps; [
+      rustup
+      zlib
+      systemd
+      openssl.dev
+      pkg-config
+    ]))
   ];
 }
