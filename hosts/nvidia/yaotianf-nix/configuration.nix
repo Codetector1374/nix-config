@@ -12,12 +12,14 @@
     ../../../common/work-dev.nix
   ];
 
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.efi = {
+    canTouchEfiVariables = false;
+  };
   boot.loader.grub = {
-    gfxmodeEfi = "1280x800";
     enable = true;
     configurationLimit = 30;
     efiSupport = true;
+    efiInstallAsRemovable = true;
     device = "nodev";
   };
 
@@ -51,6 +53,6 @@
 # TODO: upstream this fix, usev6 should find ifv4 not if.
   systemd.services.ddclient.path = [ pkgs.iproute2 ];
 
-  system.stateVersion = "24.05"; # Don't touch this
+  system.stateVersion = "24.11"; # Don't touch this
 }
 
