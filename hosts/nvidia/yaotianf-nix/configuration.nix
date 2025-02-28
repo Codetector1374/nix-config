@@ -2,14 +2,17 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }: {
   imports = [
     ./hardware-configuration.nix
-    ../../../common/base.nix
-    ../../../common/headless.nix
     ../../../hardware/nvidia-gpu.nix
+    ../../../common/base.nix
+    ../../../common/graphical.nix
+    ../../../common/headless.nix
     ../../../common/work-dev.nix
+    ../../../applications/development.nix
   ];
 
   boot.loader.efi = {
@@ -50,7 +53,7 @@
     domains = [ "yaotianf-nix.dyn.nvidia.com" ];
     passwordFile = "${pkgs.writeText "" ""}";
   };
-# TODO: upstream this fix, usev6 should find ifv4 not if.
+  # TODO: upstream this fix, usev6 should find ifv4 not if.
   systemd.services.ddclient.path = [ pkgs.iproute2 ];
 
   system.stateVersion = "24.11"; # Don't touch this

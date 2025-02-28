@@ -56,7 +56,10 @@
   programs._1password.enable = true;
   programs._1password-gui = {
     enable = true;
-    polkitPolicyOwners = [ "codetector" ];
+    polkitPolicyOwners = [
+      "codetector"
+      "yaotianf"
+    ];
   };
 
   i18n.inputMethod = {
@@ -72,13 +75,16 @@
     };
   };
 
+  systemd.user.services.hyprland-hy3 = {
+    serviceConfig.PassEnvironment = "DISPLAY";
+    script = ''
+      ${inputs.hyprland.packages.x86_64-linux.hyprland}/bin/hyprctl plugin load ${inputs.hy3.packages.x86_64-linux.hy3}/lib/libhy3.so
+    '';
+  };
+
   # Graphical Packages
   environment.systemPackages = with pkgs; [
     inputs.hy3.packages.x86_64-linux.hy3
-    (pkgs.writeShellScriptBin "loadHy3"
-    ''
-    ${inputs.hyprland.packages.x86_64-linux.hyprland}/bin/hyprctl plugin load ${inputs.hy3.packages.x86_64-linux.hy3}/lib/libhy3.so
-    '')
     # Hyprland
     waybar
     kdePackages.plasma-workspace
