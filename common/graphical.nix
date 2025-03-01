@@ -85,6 +85,10 @@
   # Graphical Packages
   environment.systemPackages = with pkgs; [
     inputs.hy3.packages.x86_64-linux.hy3
+    (pkgs.writeShellScriptBin "loadHy3"
+      ''
+      ${inputs.hyprland.packages.x86_64-linux.hyprland}/bin/hyprctl plugin load ${inputs.hy3.packages.x86_64-linux.hy3}/lib/libhy3.so
+      '')
     # Hyprland
     waybar
     kdePackages.plasma-workspace
