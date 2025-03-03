@@ -15,6 +15,7 @@
     ../../../applications/development.nix
   ];
 
+  time.timeZone = "America/Los_Angeles";
   boot.loader.efi = {
     canTouchEfiVariables = false;
   };
