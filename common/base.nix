@@ -5,6 +5,9 @@
   inputs,
   ...
 }: {
+  # Allow unfree
+  nixpkgs.config.allowUnfree = true;
+  
   # Gotta have flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
