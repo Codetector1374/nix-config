@@ -34,7 +34,7 @@
   # Emacs
   services.emacs = {
     enable = true;
-    package = pkgs.emacs30-pgtk;
+    package = pkgs.emacs;
   };
 
   services.lorri.enable = true;

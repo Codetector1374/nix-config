@@ -1,26 +1,26 @@
 {
   config,
-  lib,
-  pkgs,
-  inputs,
-  ...
+    lib,
+    pkgs,
+    inputs,
+    ...
 }: {
   imports = [
-    # VSCode Server patcher
+# VSCode Server patcher
     inputs.vscode-server.nixosModules.default
   ];
 
-  # Need to have ssh for headless to work
+# Need to have ssh for headless to work
   services.openssh.enable = true;
 
-  # systemd service to patch vscode server
+# systemd service to patch vscode server
   services.vscode-server = {
     enable = true;
-    enableFHS = true;
+    enableFHS = false;
   };
 
   environment.systemPackages = with pkgs; [
     tmux
-    yazi
+      yazi
   ];
 }
