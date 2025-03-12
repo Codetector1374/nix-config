@@ -5,6 +5,7 @@
   ...
 } : {
   environment.systemPackages = with pkgs; [
+    autossh
     p4
   ];
 }

@@ -112,12 +112,6 @@
     alacritty
     telegram-desktop
     signal-desktop
-    (vscode.fhsWithPackages(ps: with ps; [
-      rustup
-      zlib
-      systemd
-      openssl.dev
-      pkg-config
-    ]))
+    vscode
   ];
 }

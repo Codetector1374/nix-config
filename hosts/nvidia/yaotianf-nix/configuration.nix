@@ -13,6 +13,7 @@
     ../../../common/headless.nix
     ../../../common/work-dev.nix
     ../../../applications/development.nix
+    ../../../common/work-graphical.nix
   ];
 
   time.timeZone = "America/Los_Angeles";

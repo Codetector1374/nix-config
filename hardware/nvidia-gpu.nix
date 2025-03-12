@@ -30,5 +30,10 @@
 
   environment.systemPackages = with pkgs; [
     nvidia-vaapi-driver
+    egl-wayland
+  ];
+
+  boot.kernelParams = [
+    "nvidia-drm.fbdev=1"
   ];
 }
