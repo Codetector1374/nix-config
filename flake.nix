@@ -5,10 +5,13 @@
 # NixOS official package source, using the branch here
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
     vscode-server.url = "github:nix-community/nixos-vscode-server?ref=8b6db451de46ecf9b4ab3d01ef76e59957ff549f";
-    hyprland.url = "github:hyprwm/Hyprland?submodules=1&ref=v0.46.2"; # TODO: prob never get packaged
+    hyprland = {
+      url = "github:hyprwm/Hyprland?submodules=1&ref=v0.47.2"; # TODO: prob never get packaged
+      inputs.hyprutils.url = "github:hyprwm/hyprutils?ref=v0.5.0";
+    };
     aagl.url = "github:ezKEa/aagl-gtk-on-nix?ref=release-24.11";
     hy3 = {
-        url = "github:outfoxxed/hy3?ref=hl0.46.0"; # TODO: prob never get packaged
+        url = "github:outfoxxed/hy3?ref=hl0.47.0-1"; # TODO: prob never get packaged
         inputs.hyprland.follows = "hyprland";
     };
   };
