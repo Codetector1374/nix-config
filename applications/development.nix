@@ -10,7 +10,6 @@
     gdb
     gnumake
     clang-tools # provides clangd
-    clang_19
     pkg-config
 
     python312Packages.compiledb
