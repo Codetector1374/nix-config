@@ -25,7 +25,7 @@
     enable = true;
   };
 
-  security.pam.services.sddm.kwallet.enable = true;
+  security.pam.services.login.enableKwallet = true;
 
   xdg.menus.enable = true;
 
