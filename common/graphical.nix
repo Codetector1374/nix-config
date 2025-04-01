@@ -3,6 +3,7 @@
   lib,
   pkgs,
   inputs,
+  pkgs-unstable,
   ...
 }: {
   # Enable Graphics
