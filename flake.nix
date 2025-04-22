@@ -58,6 +58,12 @@
           ./hosts/shintel/configuration.nix
         ];
       };
+      "dockerhost-1" = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs outputs; };
+        modules = [
+          ./hosts/lab/dockerhost-1/configuration.nix
+        ];
+      };
     };
   };
 }
