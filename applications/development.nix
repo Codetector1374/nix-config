@@ -12,7 +12,10 @@
     clang-tools # provides clangd
     pkg-config
 
-    python312Packages.compiledb
+    compiledb
+
+    minicom
+    screen
 
     rustup
   ];

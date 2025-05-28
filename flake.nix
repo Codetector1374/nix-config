@@ -3,7 +3,8 @@
 
   inputs = {
 # NixOS official package source, using the branch here
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     vscode-server = {
       url = "github:nix-community/nixos-vscode-server?ref=8b6db451de46ecf9b4ab3d01ef76e59957ff549f";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -12,32 +13,31 @@
       url = "github:divyenduz/nixos-cursor-server?ref=5bfab4d795f7b7fd20d8855c507dfca2fb7e5d7d";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprland = {
-      url = "github:hyprwm/Hyprland?submodules=1&ref=v0.47.2"; # TODO: prob never get packaged
-      inputs.hyprutils.url = "github:hyprwm/hyprutils?ref=v0.5.0";
-    };
+#   hyprland = {
+#     url = "github:hyprwm/Hyprland?submodules=1&ref=v0.49.0";
+#     inputs.hyprutils.url = "github:hyprwm/hyprutils?ref=v0.7.1";
+#   };
     aagl = {
-      url = "github:ezKEa/aagl-gtk-on-nix?ref=release-24.11";
+      url = "github:ezKEa/aagl-gtk-on-nix?ref=release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hy3 = {
-        url = "github:outfoxxed/hy3?ref=hl0.47.0-1"; # TODO: prob never get packaged
-        inputs.hyprland.follows = "hyprland";
-    };
+#   hy3 = {
+#       url = "github:outfoxxed/hy3?ref=hl0.49.0"; # TODO: prob never get packaged
+#       inputs.hyprland.follows = "hyprland";
+#   };
   };
 
   outputs = {
-    self, 
-    nixpkgs, 
-    ... 
+    self,
+    nixpkgs,
+    ...
   } @ inputs: let
-  inherit (self) outputs;
+    inherit (self) outputs;
 
-  systems = [
-    "x86_64-linux"
-  ];
+    systems = [
+      "x86_64-linux"
+    ];
 
-  forAllSystems = nixpkgs.lib.genAttrs systems;
   in {
     nixosConfigurations = {
       nix-dev = nixpkgs.lib.nixosSystem {

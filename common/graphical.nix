@@ -21,12 +21,12 @@
       enable = true;
   };
 
+  services.gnome.gnome-keyring.enable = true;
+
   services.displayManager.sddm = {
     wayland.enable = true;
     enable = true;
   };
-
-  security.pam.services.login.enableKwallet = true;
 
   xdg.menus.enable = true;
 
@@ -35,10 +35,10 @@
     pulse.enable = true;
   };
 
-  programs.hyprland = {
-    package = inputs.hyprland.packages.x86_64-linux.hyprland;
-    enable = true;
-  };
+# programs.hyprland = {
+#   package = inputs.hyprland.packages.x86_64-linux.hyprland;
+#   enable = true;
+# };
 
   # Auto mount flash drive
   services.devmon.enable = true;
@@ -52,7 +52,7 @@
     liberation_ttf
     fira-mono
     dina-font
-    nerdfonts
+    nerd-fonts.fira-mono
     font-awesome
   ];
 
@@ -67,6 +67,8 @@
     ];
   };
 
+  programs.waybar.enable = true;
+
   i18n.inputMethod = {
     type = "fcitx5";
     enable = true;
@@ -80,29 +82,42 @@
     };
   };
 
-  systemd.user.services.hyprland-hy3 = {
-    serviceConfig.PassEnvironment = "DISPLAY";
-    script = ''
-      ${inputs.hyprland.packages.x86_64-linux.hyprland}/bin/hyprctl plugin load ${inputs.hy3.packages.x86_64-linux.hy3}/lib/libhy3.so
-    '';
+# systemd.user.services.hyprland-hy3 = {
+#   serviceConfig.PassEnvironment = "DISPLAY";
+#   script = ''
+#     ${inputs.hyprland.packages.x86_64-linux.hyprland}/bin/hyprctl plugin load ${inputs.hy3.packages.x86_64-linux.hy3}/lib/libhy3.so
+#   '';
+# };
+
+  programs.sway = {
+    enable = true;
+    wrapperFeatures.gtk = true;
   };
 
   # Graphical Packages
   environment.systemPackages = with pkgs; [
-    inputs.hy3.packages.x86_64-linux.hy3
-    (pkgs.writeShellScriptBin "loadHy3"
-      ''
-      ${inputs.hyprland.packages.x86_64-linux.hyprland}/bin/hyprctl plugin load ${inputs.hy3.packages.x86_64-linux.hy3}/lib/libhy3.so
-      '')
-    # Hyprland
-    waybar
+#   inputs.hy3.packages.x86_64-linux.hy3
+#   (pkgs.writeShellScriptBin "loadHy3"
+#     ''
+#     ${inputs.hyprland.packages.x86_64-linux.hyprland}/bin/hyprctl plugin load ${inputs.hy3.packages.x86_64-linux.hy3}/lib/libhy3.so
+#     '')
+#   # Hyprland
+
+    # Sway
+    grim # screenshot functionality
+    slurp # screenshot functionality
+    wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
+
     kdePackages.plasma-workspace
     rofi-wayland
-    hyprpaper
-    hypridle
-    hyprlock
-    hyprsunset
+    # hyprpaper
+    # hypridle
+    # hyprlock
+    # hyprsunset
+
     swaynotificationcenter
+    swaylock
+
     # Volume Contro
     pavucontrol
     # Generic Apps
@@ -114,5 +129,6 @@
     telegram-desktop
     signal-desktop
     vscode
+    code-cursor
   ];
 }
