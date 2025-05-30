@@ -28,17 +28,34 @@
     enable = true;
   };
 
+  security.rtkit.enable = true;
+
   xdg.menus.enable = true;
+  xdg.portal = {
+    enable = true;
+    config = {
+      common = {
+        default = "wlr";
+      };
+    };
+
+    wlr.enable = true;
+    wlr.settings.screencast = {
+      chooser_type = "simple";
+      chooser_cmd = "${pkgs.slurp}/bin/slurp -f %o -or";
+    };
+  };
 
   services.pipewire = {
     enable = true;
     pulse.enable = true;
+    jack.enable = true;
+    audio.enable = true;
+    alsa = {
+      enable = true;
+      support32Bit = true;
+    };
   };
-
-# programs.hyprland = {
-#   package = inputs.hyprland.packages.x86_64-linux.hyprland;
-#   enable = true;
-# };
 
   # Auto mount flash drive
   services.devmon.enable = true;
@@ -82,13 +99,6 @@
     };
   };
 
-# systemd.user.services.hyprland-hy3 = {
-#   serviceConfig.PassEnvironment = "DISPLAY";
-#   script = ''
-#     ${inputs.hyprland.packages.x86_64-linux.hyprland}/bin/hyprctl plugin load ${inputs.hy3.packages.x86_64-linux.hy3}/lib/libhy3.so
-#   '';
-# };
-
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
@@ -96,13 +106,6 @@
 
   # Graphical Packages
   environment.systemPackages = with pkgs; [
-#   inputs.hy3.packages.x86_64-linux.hy3
-#   (pkgs.writeShellScriptBin "loadHy3"
-#     ''
-#     ${inputs.hyprland.packages.x86_64-linux.hyprland}/bin/hyprctl plugin load ${inputs.hy3.packages.x86_64-linux.hy3}/lib/libhy3.so
-#     '')
-#   # Hyprland
-
     # Sway
     grim # screenshot functionality
     slurp # screenshot functionality
@@ -110,13 +113,8 @@
 
     kdePackages.plasma-workspace
     rofi-wayland
-    # hyprpaper
-    # hypridle
-    # hyprlock
-    # hyprsunset
 
     swaynotificationcenter
-    swaylock
 
     # Volume Contro
     pavucontrol
