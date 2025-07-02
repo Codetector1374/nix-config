@@ -18,7 +18,7 @@
     powerManagement.enable = false;
 
     # OpenRM
-    open = true;
+    open = false;
 
     # Enable the Nvidia settings menu,
     # accessible via `nvidia-settings`.
@@ -36,4 +36,6 @@
   boot.kernelParams = [
     "nvidia-drm.fbdev=1"
   ];
+  programs.sway.extraOptions = [ "--unsupported-gpu" ];
+
 }
