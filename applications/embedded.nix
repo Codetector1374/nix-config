@@ -14,6 +14,10 @@
         };
     };
 
+    environment.systemPackages = with pkgs; [
+      probe-rs-tools
+    ];
+
     services.udev.packages = [
         (pkgs.writeTextFile {
             name = "usb-debugger-udev";
