@@ -58,6 +58,12 @@
           ./hosts/shintel/configuration.nix
         ];
       };
+      "chiori" = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs outputs; };
+        modules = [
+         ./hosts/chiori/configuration.nix
+        ];
+      };
       "dockerhost-1" = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs outputs; };
         modules = [
