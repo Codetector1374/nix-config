@@ -51,6 +51,11 @@
   boot.kernelParams = [
     "nvidia-drm.fbdev=1"
   ];
-  programs.sway.extraOptions = [ "--unsupported-gpu" ];
+  programs.sway = {
+    extraOptions = [ "--unsupported-gpu" ];
+    extraSessionCommands = ''
+    export WLR_RENDERER=vulkan
+    '';
+  };
 
 }
