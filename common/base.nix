@@ -46,7 +46,10 @@
 
   users.defaultUserShell = pkgs.zsh;
 
-  programs.git.enable = true;
+  programs.git = {
+    enable = true;
+    lfs.enable = true;
+  };
 
   # Emacs
   services.emacs = {
