@@ -8,6 +8,8 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ../../hardware/scanner.nix
+      ../../hardware/audio/jbl305p.nix
       ../../common/base.nix
       ../../common/graphical.nix
       ../../applications/development.nix
@@ -32,7 +34,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.codetector = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "scanner" "lp" ]; # Enable ‘sudo’ for the user.
     packages = [];
   };
 

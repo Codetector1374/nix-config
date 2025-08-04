@@ -11,7 +11,7 @@
   programs.sway = {
     extraOptions = [ "--unsupported-gpu" ];
     extraSessionCommands = ''
-    export WLR_RENDERER=vulkan
+      export WLR_RENDERER=vulkan
     '';
   };
 

@@ -60,6 +60,7 @@
   services.lorri.enable = true;
 
   environment.systemPackages = with pkgs; [
+    nixfmt-classic
     python312Full
     direnv
     pciutils
@@ -85,5 +86,9 @@
     meson
     cpio
     curl
+
+    uv
+    conda
+    tmux
   ];
 }

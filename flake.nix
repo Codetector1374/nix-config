@@ -4,7 +4,6 @@
   inputs = {
 # NixOS official package source, using the branch here
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     vscode-server = {
       url = "github:nix-community/nixos-vscode-server?ref=8b6db451de46ecf9b4ab3d01ef76e59957ff549f";
       inputs.nixpkgs.follows = "nixpkgs";

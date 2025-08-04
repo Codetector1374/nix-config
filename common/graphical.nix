@@ -86,8 +86,6 @@
     ];
   };
 
-  programs.waybar.enable = true;
-
   i18n.inputMethod = {
     type = "fcitx5";
     enable = true;
@@ -100,6 +98,7 @@
       ];
     };
   };
+  services.xserver.desktopManager.runXdgAutostartIfNone = true;
 
   programs.sway = {
     enable = true;
@@ -109,9 +108,11 @@
   # Graphical Packages
   environment.systemPackages = with pkgs; [
     # Sway
+    waybar
     grim # screenshot functionality
     slurp # screenshot functionality
     wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
+    wlsunset
 
     kdePackages.plasma-workspace
     rofi-wayland
