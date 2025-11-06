@@ -132,5 +132,6 @@
     vscode
     code-cursor
     meld
+    ookla-speedtest
   ];
 }

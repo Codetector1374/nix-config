@@ -90,5 +90,10 @@
     uv
     conda
     tmux
+
+    man-pages
+    man-pages-posix
   ];
+
+  documentation.dev.enable = true;
 }
