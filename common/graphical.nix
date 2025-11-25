@@ -107,6 +107,7 @@
 
   # Graphical Packages
   environment.systemPackages = with pkgs; [
+
     # Sway
     waybar
     grim # screenshot functionality
@@ -130,7 +131,6 @@
     telegram-desktop
     signal-desktop
     vscode
-    code-cursor
     meld
     ookla-speedtest
   ];
