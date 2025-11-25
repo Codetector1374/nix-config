@@ -35,7 +35,9 @@
   users.users.codetector = {
     isNormalUser = true;
     extraGroups = [ "wheel" "scanner" "lp" ]; # Enable ‘sudo’ for the user.
-    packages = [];
+    packages = [
+      (pkgs.callPackage ../../applications/ida-pro/ida-pro.nix {})
+    ];
   };
 
   #
@@ -44,4 +46,3 @@
   #
   system.stateVersion = "25.05"; # Did you read the comment?
 }
-
