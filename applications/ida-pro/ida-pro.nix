@@ -103,7 +103,7 @@ pkgs.stdenv.mkDerivation rec {
       --mode unattended --debuglevel 4 --prefix $IDADIR
 
     # Apply IDA patches (patch only, no license)
-    (cd "$IDADIR" && ${pythonForIDA}/bin/python3 ${./patcher.py} --patch --apply)
+    (cd "$IDADIR" && ${pythonForIDA}/bin/python3 ${./patcher.py} --apply)
 
     # Link the exported libraries to the output.
     for lib in $IDADIR/*.so $IDADIR/*.so.6; do

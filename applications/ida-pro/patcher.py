@@ -168,7 +168,7 @@ def main():
 
     success = True
 
-    if args.patch:
+    if args.apply:
         success_count = patch_ida_files(args.apply)
         success = success_count > 0
 
