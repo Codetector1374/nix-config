@@ -61,7 +61,7 @@
 
   environment.systemPackages = with pkgs; [
     nixfmt-classic
-    python312Full
+    python3
     direnv
     pciutils
     gawk

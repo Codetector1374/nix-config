@@ -67,7 +67,7 @@
   fonts.packages = with pkgs; [
     noto-fonts
     noto-fonts-cjk-sans
-    noto-fonts-emoji
+    noto-fonts-color-emoji
     liberation_ttf
     fira-mono
     dina-font
@@ -93,7 +93,7 @@
       waylandFrontend = true;
       addons = with pkgs; [
         kdePackages.fcitx5-qt
-        fcitx5-chinese-addons
+        qt6Packages.fcitx5-chinese-addons
         fcitx5-nord
       ];
     };
@@ -116,7 +116,7 @@
     wlsunset
 
     kdePackages.plasma-workspace
-    rofi-wayland
+    rofi
 
     swaynotificationcenter
 
