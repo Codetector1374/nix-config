@@ -6,13 +6,14 @@
 {
   imports =
     [
-      ../../hardware/nvidia-gpu.nix
     ];
 
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "uas" "sd_mod" ];
-  boot.initrd.kernelModules = [ ];
+  boot.initrd.kernelModules = [ "amdgpu" ];
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
+
+  services.xserver.videoDrivers = [ "amdgpu" ];
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/096106ef-7bdb-4f40-97cd-29591d28acb3";

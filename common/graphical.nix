@@ -133,5 +133,6 @@
     vscode
     meld
     ookla-speedtest
+    xdot
   ];
 }

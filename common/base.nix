@@ -21,6 +21,8 @@
 
   # Allow unfree
   nixpkgs.config.allowUnfree = true;
+
+  hardware.enableAllFirmware = true;
   
   # Gotta have flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -60,6 +62,7 @@
   services.lorri.enable = true;
 
   environment.systemPackages = with pkgs; [
+    linux-firmware
     nixfmt-classic
     python3
     direnv
