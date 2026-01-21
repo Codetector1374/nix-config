@@ -11,7 +11,7 @@ pkgs.stdenv.mkDerivation rec {
   version = "9.2.0";
 
   src = pkgs.fetchurl {
-    url = "http://10.42.0.12/common_share/Software/IDA%20Pro/ida%20pro%2092/ida-pro_92_x64linux.run";
+    url = "http://10.42.1.10/Software/IDA%20Pro/ida%20pro%2092/ida-pro_92_x64linux.run";
     sha256 = "117cd625fb56ceec62f269ceb3e5caffd8cc516bf174769f8ba1785ecd9ac952";
   };
 
