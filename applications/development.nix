@@ -18,5 +18,7 @@
     screen
 
     rustup
+
+    nodejs
   ];
 }

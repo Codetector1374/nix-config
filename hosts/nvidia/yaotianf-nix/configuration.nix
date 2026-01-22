@@ -16,6 +16,8 @@
     ../../../common/work-graphical.nix
   ];
 
+  networking.usePredictableInterfaceNames = true;
+
   time.timeZone = "America/Los_Angeles";
   boot.loader.efi = {
     canTouchEfiVariables = false;
