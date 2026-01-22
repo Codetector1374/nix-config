@@ -94,6 +94,8 @@
     conda
     tmux
 
+    ncdu
+
     man-pages
     man-pages-posix
   ];
